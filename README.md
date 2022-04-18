@@ -20,3 +20,6 @@
 # **3-Schematic:**
 
 ![](./Assets/3.png)
+
+# **4-Use case diagram:**
+
