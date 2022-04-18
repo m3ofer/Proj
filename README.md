@@ -23,4 +23,6 @@
 
 # **4-Use case diagram:**
 
+![](./Assets/admin.png)
 
+![](./Assets/clt.png)
