@@ -6,8 +6,8 @@
 #define DHTTYPE DHT22
 
 const int ledPin = 5;// red light pin
-const char *SSID = "TP-LINK_CC2894";//wifi name
-const char *PWD = "comptonnitrogenpicom";// wifi password
+const char *SSID = "******";//wifi name
+const char *PWD = "*****";// wifi password
 
 DHT dht(DHTPIN, DHTTYPE);//setting dht pins & type of dht
 
