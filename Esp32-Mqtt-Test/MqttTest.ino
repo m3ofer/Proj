@@ -94,10 +94,10 @@ void loop() {
       delay(2000);
       float h = dht.readHumidity();
       float t = dht.readTemperature();
-      //float f = dht.readTemperature(true);
+      //float f = dht.readTemperature(true); //reads temp in Fahrenheit
       String m = "";
       m += String(WiFi.macAddress());
-      //checking if dht22 is regonized
+      //checking if dht22 is working
       if (isnan(h) || isnan(t)) {
         Serial.println(F("Failed to read from DHT sensor!"));
         return;
