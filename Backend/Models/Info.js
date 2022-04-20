@@ -6,9 +6,11 @@ const InfoSchema = new Schema({
         type : Number,
         required : true
     },
-    person : {
-        type : String
-    }
+    client: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Client'
+    },
 },{timestamps : true})
 
 

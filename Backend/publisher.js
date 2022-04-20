@@ -6,7 +6,7 @@ client.on("connect",function(){
         console.log(random);
         var data = { temp : random,person :'we will find' };
         if(random<30){
-            client.publish('Temp',"{\"temp\" : \""+random+"\",\"person\" : \"test\"}");
+            client.publish('/swa/temperature',"{\"temp\" : \""+random+"\",\"person\" : \"test\"}");
         }
     },2000),30000;
 });
