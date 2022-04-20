@@ -5,6 +5,10 @@ in order to test the code wokwi can help
 ```
 https://wokwi.com/projects/329499808265929300
 ```
+# **This is the material needed**
+
+![](./Assets/Prototype.png)
+
 ** in the unlikely event the site doesn't work here's the code **
 ```
 // heck source code by M3ofer
