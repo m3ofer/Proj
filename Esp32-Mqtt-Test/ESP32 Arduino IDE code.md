@@ -10,6 +10,7 @@ Libraries needed :
 - DHT sensor library for ESPX.
 - pubsubClient
 - WiFi
+
 # **the material needed**
 
 ![](../Assets/Prototype.png)
