@@ -5,8 +5,8 @@
 #define DHTTYPE DHT22
 
 //setting up needed variables
-const char* ssid = "TP-LINK_CC2894";// wifi name
-const char* password = "comptonnitrogenpicom";// wifi password
+const char* ssid = "*******";// wifi name
+const char* password = "********";// wifi password
 const char* mqttServer = "test.mosquitto.org";// mqtt server can be switched to broker.hivemq.com
 int port = 1883;
 String stMac;
