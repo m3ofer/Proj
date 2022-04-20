@@ -7,7 +7,7 @@ https://wokwi.com/projects/329499808265929300
 ```
 # **This is the material needed**
 
-![](./Assets/Prototype.png)
+![](../Assets/Prototype.png)
 
 ** in the unlikely event the site doesn't work here's the code **
 ```
