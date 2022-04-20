@@ -14,7 +14,7 @@ Libraries needed :
 
 ![](../Assets/Prototype.png)
 
-** in the unlikely event the site doesn't work here's the code **
+**in the unlikely event the site doesn't work here's the code**
 ```
 // heck source code by M3ofer
 #include <WiFi.h>
