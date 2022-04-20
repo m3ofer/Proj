@@ -7,12 +7,12 @@
 
 const int ledPin = 5;// red light pin
 const char *SSID = "******";//wifi name
-const char *PWD = "*****";// wifi password
+const char *PWD  = "******";// wifi password
 
 DHT dht(DHTPIN, DHTTYPE);//setting dht pins & type of dht
 
 long last_time = 0;
-char data[1000];
+char data[100];
 
 // MQTT client
 WiFiClient wifiClient;
@@ -49,17 +49,18 @@ void setupMQTT() {
   mqttClient.setServer(mqttServer, mqttPort);
   // set the callback function
   mqttClient.setCallback(callback);
-  pinMode (ledPin, OUTPUT);
+  
 }
-
 
 void setup() {
   Serial.begin(9600); 
   connectToWiFi();
   Serial.println(F("DHTxx test!"));
+  pinMode (ledPin, OUTPUT);
   dht.begin();
   setupMQTT();  
 }
+
 //subs to topic commands allows to send meesages to esp32
 void reconnect() {
   Serial.println("Connecting to MQTT Broker...");
@@ -76,7 +77,6 @@ void reconnect() {
   }
 }
 
-
 void loop() {
   //just testing the red led
   digitalWrite (ledPin, HIGH);
@@ -90,30 +90,23 @@ void loop() {
   mqttClient.loop();
 
   long now = millis();
-  if (now - last_time > 6000) {
+  if (now - last_time > 60000) {
       delay(2000);
-      float h = dht.readHumidity();
+     
       float t = dht.readTemperature();
-      //float f = dht.readTemperature(true); //reads temp in Fahrenheit
       String m = "";
       m += String(WiFi.macAddress());
-      //checking if dht22 is working
-      if (isnan(h) || isnan(t)) {
+      //checking if dht22 is regonized
+      if (isnan(t)) {
         Serial.println(F("Failed to read from DHT sensor!"));
         return;
       }
-        // Publishing data throgh MQTT to 3 different topics
-        sprintf(data, "%f", t);
-        sprintf(data, "temperature %f C°", t);
+        // Publishing data
+        sprintf(data, "{\"temp\" : \"%f\",\"person\" : \"%s\"}",t,m.c_str());
         Serial.println(data);
         mqttClient.publish("/swa/temperature", data);
-        sprintf(data, "humidity %f C°", h);
-        Serial.println(h);
-        mqttClient.publish("/swa/humidity", data);
-        sprintf(data, "%s", m.c_str());
-        Serial.println(m);
-        mqttClient.publish("/swa/client", data);
+       Serial.println(t);
+       Serial.println(m);
         last_time = now;
   }
-
 }
