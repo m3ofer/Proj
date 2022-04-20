@@ -5,6 +5,7 @@ in order to test the code wokwi can help
 ```
 https://wokwi.com/projects/329499808265929300
 ```
+**in the unlikely event the site doesn't work here's what you need :**
 
 # **the needed libraries**
 - DHT sensor library for ESPX.
@@ -15,7 +16,7 @@ https://wokwi.com/projects/329499808265929300
 
 ![](../Assets/Prototype.png)
 
-**in the unlikely event the site doesn't work here's the code**
+**the code**
 ```
 // heck source code by M3ofer
 #include <WiFi.h>
