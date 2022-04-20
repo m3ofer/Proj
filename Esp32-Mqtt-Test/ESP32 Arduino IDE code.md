@@ -5,8 +5,8 @@ in order to test the code wokwi can help
 ```
 https://wokwi.com/projects/329499808265929300
 ```
+
 # **the needed libraries**
-Libraries needed :
 - DHT sensor library for ESPX.
 - pubsubClient
 - WiFi
