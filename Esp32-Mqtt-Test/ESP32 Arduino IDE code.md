@@ -5,7 +5,12 @@ in order to test the code wokwi can help
 ```
 https://wokwi.com/projects/329499808265929300
 ```
-# **This is the material needed**
+# **the needed libraries**
+Libraries needed :
+- DHT sensor library for ESPX.
+- pubsubClient
+- WiFi
+# **the material needed**
 
 ![](../Assets/Prototype.png)
 
