@@ -5,8 +5,8 @@
 #define DHTTYPE DHT22
 
 //setting up needed variables
-const char* ssid = "*******";// wifi name
-const char* password = "********";// wifi password
+const char* ssid = "******";// wifi name
+const char* password = "******";// wifi password
 const char* mqttServer = "test.mosquitto.org";// mqtt server can be switched to broker.hivemq.com
 int port = 1883;
 String stMac;
@@ -14,7 +14,7 @@ char mac[50];
 char clientId[50];
 const int ledPin = 5;
 long last_time = 0;
-char data[100];//we store data that were going to publish
+char data[100];//we store data that were going to publish here
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -23,8 +23,6 @@ DHT dht(DHTPIN, DHTTYPE);//setting dht pins & type of dht
 
 void setup() {
   Serial.begin(9600);
-  randomSeed(analogRead(0));
-  delay(10);
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -38,7 +36,9 @@ void setup() {
   client.setServer(mqttServer, port);
   client.setCallback(callback);
   pinMode(ledPin, OUTPUT);
-  
+  // starting dht
+  Serial.println(F("DHTxx test!"));
+  dht.begin();
 }
 
 void wifiConnect() {
@@ -58,7 +58,7 @@ void mqttReconnect() {
     if (client.connect(clientId)) {
       Serial.print(clientId);
       Serial.println(" connected");
-      client.subscribe("/swa/commands");
+      client.subscribe("temp");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -79,7 +79,7 @@ void callback(char* topic, byte* message, unsigned int length) {
     stMessage += (char)message[i];
   }
   Serial.println();
-  if (String(topic) == "/swa/commands") {
+  if (String(topic) == "temp") {
     Serial.print("Changing output to ");
     if(stMessage == "on"){
       Serial.println("on");
