@@ -13,26 +13,27 @@ var client = mqtt.connect("mqtt://test.mosquitto.org");
 var c=null; 
 
 client.on('connect',async function () {
-    c = await service.find();
-    const t = await service.getTopicsOfclient(c);
-    
-
-    client.subscribe(t.name);
+   
+    const topics = await service.getAllTopics();
+    topics.forEach(topic => {
+        client.subscribe(topic.name);
+    });
     console.log("client subscribed successfully");
 });
 client.on('message',function(topic,message){
     console.log(message.toString());
-    storeData(message.toString(),c._id);
+    storeData(message.toString(),topic);
 })
 
 
 
-function storeData(data,person) {
+async function storeData(data,topic) {
      
     data = JSON.parse(data);
     console.log(data);
-    const info = new Info({ temperature : data.temp,client : person});
-   
+    const client = await service.find(data.person);
+    const info = new Info({ temperature : data.temp,client : client._id});
+    
     info.save().then(()=>{
         console.log("Information stored successfully");
     }).catch((err)=>{

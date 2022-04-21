@@ -2,8 +2,8 @@ const Info = require("../Models/Info");
 const Client =require("../Models/Client");
 const Topic = require("../Models/Topic");
 
-async function find() {
-    return await Client.findById("625f02bda63b39c97457605c");
+async function find(macAddress) {
+    return await Client.findOne({ macAddress});
 }
 
 async function getTopicsOfclient(client){
@@ -11,7 +11,12 @@ async function getTopicsOfclient(client){
     return topics;
 }
 
+async function getAllTopics() {
+    return await Topic.find();
+}
+
 module.exports = {
     find,
-    getTopicsOfclient
+    getTopicsOfclient,
+    getAllTopics
 }
