@@ -30,7 +30,7 @@ const int DHT_PIN = 4;
 
 const char* mqttServer = "test.mosquitto.org";
 int port = 1883;
-
+char data[1000];
 String stMac;
 char mac[50];
 char clientId[50];
@@ -116,11 +116,17 @@ void callback(char* topic, byte* message, unsigned int length) {
 }
 
 void loop() {
-  delay(10);
+  delay(6000);
   if (!client.connected()) {
     mqttReconnect();
   }
   client.loop();
-}
+      String m = "";
+      m += String(WiFi.macAddress());
+  TempAndHumidity  t = dhtSensor.getTempAndHumidity();
+  Serial.println("hello");
+  sprintf(data, "{\"temp\" : \"%s\",\"person\" : \"%s\"}",String(t.temperature, 2),m.c_str());
+  client.publish("/swa/temperature", data);
 
+}
 ```
