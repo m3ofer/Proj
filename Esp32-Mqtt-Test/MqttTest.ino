@@ -13,8 +13,8 @@
 #include <BlynkSimpleEsp32.h>
 
 //setting up needed variables
-const char* ssid = "TP-LINK_CC2894";// wifi name
-const char* password = "comptonnitrogenpicom";// wifi password
+const char* ssid = "********";// wifi name
+const char* password = "********;// wifi password
 const char* mqttServer = "test.mosquitto.org";// mqtt server can be switched to broker.hivemq.com
 int port = 1883;
 String stMac;
@@ -134,30 +134,8 @@ void setup() {
 void loop() {
   if (!client.connected())
     mqttReconnect();
-    
+  
   client.loop();
   Blynk.run();
   timer.run();
-  /*long now = millis();
-  if (now - last_time > 6000) {
-      delay(2000);
-      //Sending data to a single topic
-      float t = dht.readTemperature();
-      //float h = dht.readHumidity();
-      String m = "";
-      m += String(WiFi.macAddress());
-      //checking if dht22 is regonized
-      if (isnan(t)) {
-         Serial.println(F("Failed to read from DHT sensor!"));
-         return;
-      }
-       // Publishing data
-       sprintf(data, "{\"temp\" : \"%f\",\"person\" : \"%s\"}",t,m.c_str());
-       Serial.println(data);
-       client.publish("/swa/temperature", data);
-       //Serial.print("Temperature : ");
-       //Serial.print(t,2);
-       //Serial.println("C°");
-       last_time = now;
-  }*/
 }
