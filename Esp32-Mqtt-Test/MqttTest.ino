@@ -1,7 +1,7 @@
-// making connection to phone app
-#define BLYNK_TEMPLATE_ID "TMPLDr73x7Sw"
-#define BLYNK_DEVICE_NAME "ESPTemp32"
-#define BLYNK_AUTH_TOKEN "41IbMW7bPrialltd5BB4cZlRS71blqMQ"
+// making connection to phone app the empty space will be filled with information that are unique to your device
+#define BLYNK_TEMPLATE_ID ""
+#define BLYNK_DEVICE_NAME ""
+#define BLYNK_AUTH_TOKEN ""
 #define BLYNK_PRINT Serial
 
 //adding needed libraries
