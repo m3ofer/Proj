@@ -43,11 +43,9 @@ void sendSensor(){
   sprintf(data, "{\"temp\" : \"%s\",\"person\" : \"%s\"}",String(t, 2),m.c_str());
   client.publish("/swa/temperature", data);
   Serial.println(data);
-
 }
+
 BLYNK_WRITE(V1){
-  //int pinValue= param.asInt();
-  //digitalWrite(led,pinValue);
    if (param.asInt()) {
      client.publish("temp","on");
    }
