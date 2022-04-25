@@ -31,7 +31,7 @@ PubSubClient client(espClient);
 DHT dht(DHTPIN, DHTTYPE);//setting dht pins & type of dht
 
 void sendSensor(){
-  //setting up variables
+  //setting up dht sensor temperature and humidity values
   float t = dht.readTemperature();
   float h = dht.readHumidity();
   String m = "";
