@@ -11,6 +11,10 @@ const InfoSchema = new Schema({
         required: true,
         ref: 'Client'
     },
+    fromTopic : {
+        type : String,
+        required : true
+    }
 },{timestamps : true})
 
 

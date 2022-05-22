@@ -4,24 +4,29 @@ const Schema = mongoose.Schema;
 const ClientSchema = new Schema({
     macAddress : {
         type : String,
-        required : true
+        required : true,
+        unique : true
     },
     location : {
         longitude : {
             type : String,
-            //required : true
+            required : true
         },
         latitude : {
             type : String,
-            //required : true
+            required : true
         }
     },
     subscribedAt : [
         {
-            topic: {
+            topic : {
                 type: mongoose.Schema.Types.ObjectId,
                 //required: true,
-                ref: 'Topic',
+                ref: 'Topic',   
+            },
+            limit : {
+                type : String,
+                //required : true
             }
         } 
     ],

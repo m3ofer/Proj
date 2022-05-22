@@ -11,5 +11,11 @@ const TopicSchema = new Schema({
     },
 },{timestamps : true})
 
+// TopicSchema.pre('findOneAndDelete', function() {
+//     // Remove all the assignment docs that reference the removed person.
+//     console.log(this.model('Client').subscribedAt+"-------------");
+//     this.model('Client').subscribedAt = this.model('Client').subscribedAt.filter(data => data.topic.name != this.name);
+//     next();
+// });
 
 module.exports = mongoose.model('Topic',TopicSchema);

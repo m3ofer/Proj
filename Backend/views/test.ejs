@@ -10,14 +10,15 @@
 </head>
 <body>
     <script>
-        let mac = '<%- macAddress  %>'.split('=')[1]; 
+        let mac = '<%- macAddress  %>'; 
+        let topic = '<%- topic  %>'; 
+        
         var socket = io.connect();
         console.log('<%- macAddress  %>')
         
-        socket.on(mac, function(data) {
+        socket.on(mac+topic, function(data) {
           alert(data);
         });
-        
     </script>
 </body>
 </html>

@@ -7,6 +7,98 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HOME VIEW</h1>
+    <h1>HOME VIEW Services : </h1>
+    <table style="border : 1px solid black; border-collapse: collapse;">
+        <tr>
+            <td>
+                'get' Client list
+            </td>
+            <td>
+                <a href="/clients/clientsList">/clients/clientsList</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'post' add Client
+            </td>
+            <td>
+                <a href="/clients/addClient">/clients/addClient</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'post' subscribe to topic
+            </td>
+            <td>
+                <a href="/clients/addTopicToClient">/clients/addTopicToClient</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'post' unsubscribe from topic
+            </td>
+            <td>
+                <a href="/clients/unsubscribe/:macAddress/:topic">/clients/unsubscribe/:macAddress/:topic</a>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                'get' topics 
+            </td>
+            <td>
+                <a href="/topics/all">/topics/all</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'get' add topic
+            </td>
+            <td>
+                <a href="/topics/add">/topics/add</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'get' remove topic
+            </td>
+            <td>
+                <a href="/topics/remove/:name">/topics/remove/:name</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'post' login user
+            </td>
+            <td>
+                <a href="/users/login">/users/login</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'get' logout user
+            </td>
+            <td>
+                <a href="/users/logout">/users/logout</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'get' client live info
+            </td>
+            <td>
+                <a href="/live/:macAddress/:topic">/live/:macAddress/:topic</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'get' client previous info by date interval
+            </td>
+            <td>
+                <a href="/date/:topic/:macAddress/:date1/:date2">/date/:topic/:macAddress/:date1/:date2</a>
+            </td>
+        </tr>
+        <!-- /date/:macAddress/:date1/:date2 -->
+    </table>
 </body>
 </html>

@@ -10,7 +10,13 @@ const addInfo = (data)=>{
     })
     
 }
+const infoByDate = (date1,date2)=>{
+    
+
+}
+
 
 module.exports = {
-    addInfo
+    addInfo,
+    infoByDate
 }

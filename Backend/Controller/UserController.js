@@ -44,7 +44,7 @@ const checkUser= async (req,res) => {
         const user = await User.login(username,passwordUser); 
         const token =createToken(user._id);
         res.cookie("jwt",token,{httpOnly : true,maxAge : maxAge*1000});
-        res.status(200).json({user : user._id}); 
+        res.status(200).json({token : token}); 
     } catch (error) {
         //console.log(error);
         res.status(401).json(errorHandler(error));
