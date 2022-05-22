@@ -1,4 +1,6 @@
-# <u>**Projet tuteuré :**</u>
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
+# Projet tuteuré
 
 - **Matériaux** : Esp32, DHT11 ou DHT22, BreadBoard,Jumper wires.
   
@@ -9,20 +11,20 @@
 - **Prototypage** : Fritzing.
   
 
-# **1-Business Diagram :**
+## 1-Business Diagram :
 
 ![](./Assets/1.png)
 
 
-# **2-BreadBoard :**
+## 2-BreadBoard :
 
 ![](./Assets/2.png)
 
-# **3-Schematic:**
+## 3-Schematic:
 
 ![](./Assets/3.png)
 
-# **4-Use case diagram:**
+## 4-Use case diagram :
 
 ![](./Assets/admin.png)
 
