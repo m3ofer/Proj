@@ -59,10 +59,19 @@ const RemoveTopicFromClient = (req,res)=>{
     })       
 }
 
+const TopicsOfClient = (req,res)=>{
+    Client.findOne({macAddress : req.params.macAddress}).populate("subscribedAt.topic","name").then((result)=>{
+        res.status(200).json(result.subscribedAt);
+    }).catch((err)=>{
+        res.status(500).json(err);
+    })
+}
+
 module.exports={
     AllClients_Service,
     AllClients_Get,
     addClient,
     addTopicToClient,
-    RemoveTopicFromClient
+    RemoveTopicFromClient,
+    TopicsOfClient
 }

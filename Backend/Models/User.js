@@ -12,6 +12,12 @@ const UserSchema = new Schema({
         type : String,
         required : true,
     },
+    firstName : {
+        type : String,
+    },
+    lastName : {
+        type : String,
+    },
     isAdmin : {
         type : Boolean,
         default : false

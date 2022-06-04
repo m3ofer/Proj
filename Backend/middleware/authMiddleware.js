@@ -2,7 +2,10 @@ const jwt = require("jsonwebtoken");
 const User = require("../Models/User");
 
 const authRequire = (req,res,next)=>{
-    const token = req.cookies.jwt; 
+    const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1] 
+  //const token = req.cookies.jwt;
+
     if(token){
         jwt.verify(token,"smail li kayn",(err,decode)=>{
             if(err){
@@ -19,7 +22,10 @@ const authRequire = (req,res,next)=>{
 }
 
 const getUserInfo = (req,res,next)=>{
-    const token = req.cookies.jwt; 
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    //const token = req.cookies.jwt;
+
     if(token){
         jwt.verify(token,"smail li kayn",async (err,decode)=>{
             if(err){
@@ -43,7 +49,9 @@ const getUserInfo = (req,res,next)=>{
 }
 
 const CheckAuthorisation = (req,res,next)=>{
-    const token = req.cookies.jwt; 
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    //const token = req.cookies.jwt;
     if(token){
         jwt.verify(token,"smail li kayn",async (err,decode)=>{
             if(err){

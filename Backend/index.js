@@ -23,7 +23,11 @@ app.use(express.urlencoded({extended : true}));
 app.use(cookieParser()); 
 app.use(express.json());
 app.use(cors())
-
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://e-healthfront.herokuapp.com"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 const dbURI = process.env.MongoURI;
 mongoose.connect("mongodb+srv://nado:test123@cluster0.1yy0b.mongodb.net/IOT-project?retryWrites=true&w=majority",{useNewUrlParser : true,useUnifiedTopology : true}).then((result)=>{
@@ -126,7 +130,7 @@ app.get("/",(req,res)=>{
     res.render("Home");
 });
 
-app.get("/live/:macAddress/:topic",authMiddleware.CheckAuthorisation,(req,res)=>{
+app.get("/data/live/:macAddress/:topic",authMiddleware.CheckAuthorisation,(req,res)=>{
     res.render("test",{macAddress : req.params.macAddress,topic : req.params.topic});
 }); 
 
@@ -140,18 +144,39 @@ app.use("/topics",authMiddleware.CheckAuthorisation,topicsRoute);
 
 
 
-app.get("/date/:topic/:macAddress/:date1/:date2",authMiddleware.CheckAuthorisation,(req,res)=>{
-    Info.find({ //query today up to tonight
+app.get("/data/:topic/:username/:date1/:date2",authMiddleware.CheckAuthorisation,(req,res)=>{
+    Info.find({ 
         topic : req.params.topic,
         createdAt: {
             $gte: Date.parse(req.params.date1), 
             $lt: Date.parse(req.params.date2)
         }
-    }).populate('client',"macAddress").then((result)=>{
-        res.json(result.filter(data => (data.client != null) && (data.client.macAddress == req.params.macAddress) && (data.fromTopic == req.params.topic)))
+    }).populate({
+        path : 'client',
+        populate : {
+          path : 'user'
+        }
+      }).then((result)=>{
+        res.json(result.filter(data => (data.client.user != null) && (data.client.user.username == req.params.username) && (data.fromTopic == req.params.topic)))
     }).catch((err)=>{
-        res.status(500).json("error check the format of tha date (yyyy-mm-dd")
+        res.status(500).json("error check the format of tha date (yyyy-mm-dd)")
     })
 
+    
+})
+
+app.get("/data/:topic/:username/",authMiddleware.CheckAuthorisation,(req,res)=>{
+    Info.find({ //query today up to tonight
+        topic : req.params.topic
+    }).populate({
+        path : 'client',
+        populate : {
+          path : 'user'
+        }
+      }).then((result)=>{
+        res.json(result.filter(data => (data.client.user != null) && (data.client.user.username == req.params.username) && (data.fromTopic == req.params.topic)))
+    }).catch((err)=>{
+        res.status(500).json("error check the format of tha date (yyyy-mm-dd)")
+    })
     
 })
