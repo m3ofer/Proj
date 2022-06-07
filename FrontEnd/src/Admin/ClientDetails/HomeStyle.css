@@ -1,0 +1,79 @@
+.Details{
+    display: flex;
+    
+}
+.contenu{
+    width:40% ;
+    padding-left: 1em;
+    margin-left: 30px;
+}
+
+.contenu h1{
+    font-size: 5rem; 
+    margin-right: 80%;
+}
+
+.chartContainer{
+    display: block;
+    position: sticky;
+    
+    margin-left: 600px;
+    width:10px;
+}
+ #h3{
+     margin-left: 70px;
+    margin-top: 90px;
+    display: flex;
+}
+.table{
+    margin-left:35px;
+    margin-top: 150px;
+}
+.td{
+    padding-left: 30px;
+   
+}
+
+.datePicker{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height :30px;
+    border: 1px solid slateblue;
+}
+@media screen and (max-width:900px) {
+    html{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:768px) {
+    html{
+        font-size: 14px;
+    }
+    .Main{
+        flex-direction: column;
+        margin-top: 1em;
+    }
+    .contenu{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .contenu h1{
+        font-size: 3rem; 
+        
+    }
+    .contenu p{
+        font-size: 1.1rem; 
+       
+    }
+    .chartContainer{
+        width: 80%;
+    }
+    
+}
+@media screen and (max-width:400px) {
+    .chartContainer{
+        width: 60%;
+    }
+    
+}

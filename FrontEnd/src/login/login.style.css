@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  justify-content:space-between ;
+  align-items:center ;
+  height: 100vh;
+  
+ 
+}
+.field{
+  margin-left: 10px;
+}
+.container > form {
+  width: 50%;
+  border: 1px solid #dfdfdf;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  
+}
+.imgL{
+  margin-top: 15px;
+  width: 90%;
+}
+.imgL img{
+  margin-left: 50px;
+  display: block;
+  width: 90%;
+}
+.message{
+  width: 40%;
+  margin-left: 100px;
+}
+
+.st2 {
+    color: #fff;
+    background-color: #813AFE !important;
+    border-color: #813AFE !important;
+    width: 70%;
+    margin-top: 10px;
+    margin-left: 20px;
+    
+}
+p {
+  color: red;
+  margin-left: 10px;
+}
+.icon-img{
+  margin-left: 120px;
+    
+  width: 150px;
+  height: 150px;
+  
+}
+
